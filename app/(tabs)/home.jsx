@@ -3,13 +3,14 @@ import React from "react";
 import { images } from "../../constants";
 import SearchInput from "../../components/SearchInput";
 import Trending from "../../components/Trending";
+import EmptyState from "../../components/EmptyState";
 
 const Home = () => {
   return (
-    <SafeAreaView className="bg-primary">
+    <SafeAreaView className="bg-primary h-full">
       <FlatList
-        data={[{ id: 1 }, { id: 2 }, { id: 3 }]}
-        // data={[]}
+        // data={[{ id: 1 }, { id: 2 }, { id: 3 }]}
+        data={[]}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
           <View>
@@ -46,9 +47,10 @@ const Home = () => {
         )}
 
         ListEmptyComponent={()=>(
-          <View className=''>
-            <Text className='text-white text-lg font-pmedium'>No Videos Found</Text>
-          </View>
+         <EmptyState 
+         title='No videos found'
+         subtitle='Be the first one to upload a video'
+         />
         )}
       />
     </SafeAreaView>
